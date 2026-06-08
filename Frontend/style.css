@@ -44,6 +44,60 @@ body{
     z-index:-1;
 }
 
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.overlay{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.4);
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s ease;
+    z-index: 9990;
+}
+
+.overlay.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth-box {
+    display: none !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 420px;
+    padding: 40px;
+    background: rgba(20,20,20,.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 0 20px rgba(123,97,255,.3), 0 0 50px rgba(123,97,255,.2);
+    transform: translate(-50%,-50%) scale(.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.auth-box.active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%,-50%) scale(1) !important;
+}
+
 /* CONTAINER */
 
 .container{

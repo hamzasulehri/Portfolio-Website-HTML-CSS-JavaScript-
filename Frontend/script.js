@@ -1,35 +1,40 @@
 const loginBtn = document.getElementById("loginBtn");
 const authBox = document.getElementById("authBox");
+const overlay = document.getElementById("overlay");
 
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 
-document.addEventListener("click", (e) => {
+// Open Login Popup
+loginBtn.addEventListener("click", () => {
+    authBox.classList.add("active");
+    overlay.classList.add("active");
+    authBox.style.display = "block";
+    authBox.style.opacity = "1";
+    authBox.style.visibility = "visible";
+});
 
-    if(e.target.id === "loginBtn"){
-        authBox.style.display = "block";
-    }
+// Switch to Register
+document.getElementById("showRegister").addEventListener("click", (e) => {
+    e.preventDefault();
 
-    if(e.target.id === "showRegister"){
-        e.preventDefault();
+    loginForm.classList.remove("active");
+    registerForm.classList.add("active");
+});
 
-        loginForm.classList.remove("active");
-        registerForm.classList.add("active");
-    }
+// Switch to Login
+document.getElementById("showLogin").addEventListener("click", (e) => {
+    e.preventDefault();
 
-    if(e.target.id === "showLogin"){
-        e.preventDefault();
+    registerForm.classList.remove("active");
+    loginForm.classList.add("active");
+});
 
-        registerForm.classList.remove("active");
-        loginForm.classList.add("active");
-    }
-
-    if(
-        authBox.style.display === "block" &&
-        !authBox.contains(e.target) &&
-        e.target.id !== "loginBtn"
-    ){
-        authBox.style.display = "none";
-    }
-
+// Close when clicking overlay
+overlay.addEventListener("click", () => {
+    authBox.classList.remove("active");
+    overlay.classList.remove("active");
+    authBox.style.display = "none";
+    authBox.style.opacity = "0";
+    authBox.style.visibility = "hidden";
 });
